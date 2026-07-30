@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Night Posters — The Tunnel &amp; Co.</title>
+<link rel="icon" type="image/svg+xml" href="/img/quiz-logo-green.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Montserrat:wght@400..800&display=swap" rel="stylesheet">
+<style>
+  /* Brand palette — Brand Identity Guidelines, Amsterdam 2026.
+     Display face: Brigends Expanded (licensed); Anybody Expanded stands in. */
+  :root{
+    --orange:#EA6F1C;
+    --cream:#EBE7C8;
+    --green:#103B32;
+    --brown:#3B2A1F;
+    --black:#131313;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#0D0C0B;
+    color:var(--cream);
+    font-family:'Montserrat',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:48px 24px 80px;
+  }
+  .page-head{max-width:1200px;margin:0 auto 40px;text-align:center}
+  .page-head h1{
+    font-family:'Brigends Expanded','Anybody',sans-serif;
+    font-stretch:122%;font-weight:800;
+    text-transform:uppercase;
+    font-size:clamp(1.5rem,4vw,2.2rem);line-height:1;
+  }
+  .page-head p{opacity:.7;font-weight:600;margin-top:12px;font-size:.95rem}
+
+  .gallery{
+    max-width:1200px;margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:36px;
+  }
+
+  /* ---------- poster base (A-series ratio) ---------- */
+  .poster{
+    aspect-ratio:1/1.414;
+    display:flex;flex-direction:column;
+    padding:9% 9% 7%;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    border-radius:3px;
+    container-type:inline-size;
+  }
+  .poster .body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5.5cqw;position:relative;z-index:1}
+  .display{
+    font-family:'Brigends Expanded','Anybody',sans-serif;
+    font-stretch:122%;
+    font-weight:800;
+    text-transform:uppercase;
+    line-height:1.02;
+    letter-spacing:.005em;
+  }
+  .eyebrow{
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.24em;
+    font-size:3cqw;
+  }
+  .small{font-weight:600;font-size:3.3cqw;letter-spacing:.02em}
+  .rule{border:none;border-top:.9cqw solid currentColor;width:18cqw;margin:0 auto}
+
+  .foot{
+    display:flex;align-items:center;justify-content:center;gap:3cqw;
+    font-weight:800;text-transform:uppercase;
+    letter-spacing:.16em;font-size:2.4cqw;
+    margin-top:6cqw;
+    position:relative;z-index:1;
+  }
+  .arch-mark{
+    width:7cqw;height:5.6cqw;
+    border:1.8cqw solid currentColor;
+    border-bottom:none;
+    border-radius:5cqw 5cqw 0 0;
+    flex:0 0 auto;
+  }
+
+  /* ---------- P1: orange statement ---------- */
+  .p-orange{background:var(--orange);color:var(--black)}
+  .p-orange .display{font-size:12cqw;text-align:left;align-self:flex-start}
+  .p-orange .body{align-items:flex-start;text-align:left;justify-content:center;gap:6cqw}
+  .p-orange .small{opacity:.85}
+  .p-orange .foot{justify-content:flex-start;letter-spacing:.14em}
+
+  /* ---------- P2: cream true story ---------- */
+  .p-story{background:var(--cream);color:var(--brown)}
+  .p-story .eyebrow{color:var(--orange)}
+  .p-story .display{font-size:7.6cqw;color:var(--black)}
+  .p-story .rule{color:var(--orange)}
+  .p-story .tagline{
+    color:var(--orange);font-weight:800;
+    text-transform:uppercase;letter-spacing:.2em;font-size:2.7cqw;
+  }
+
+  /* ---------- P3: dark arch, quiz mark ---------- */
+  .p-dark{background:var(--black);color:var(--cream)}
+  .p-dark .glow{
+    position:absolute;inset:auto 0 0 0;height:55%;
+    background:radial-gradient(ellipse 90% 70% at 50% 100%, rgba(234,111,28,.28), transparent 65%);
+    pointer-events:none;
+  }
+  .p-dark .qlogo{
+    width:40cqw;
+    filter:drop-shadow(0 0 4cqw rgba(234,111,28,.55)) drop-shadow(0 0 12cqw rgba(234,111,28,.35));
+  }
+  .p-dark .display{font-size:10cqw}
+  .p-dark .display em{font-style:normal;color:var(--orange)}
+  .p-dark .eyebrow{color:var(--orange)}
+
+  /* ---------- P4: green jackpot ---------- */
+  .p-jackpot{background:var(--green);color:var(--cream)}
+  .p-jackpot .amount{
+    font-family:'Brigends Expanded','Anybody',sans-serif;
+    font-stretch:118%;font-weight:800;
+    font-size:26cqw;line-height:.95;
+    color:var(--orange);
+    letter-spacing:-.01em;
+  }
+  .p-jackpot .display{font-size:7.4cqw}
+  .p-jackpot .eyebrow{color:var(--orange)}
+
+  /* ---------- P5: six heads max ---------- */
+  .p-six{background:var(--orange);color:var(--black)}
+  .p-six .heads{display:flex;gap:2.6cqw;justify-content:center}
+  .p-six .head{
+    width:8.4cqw;height:6.8cqw;
+    border:2.2cqw solid var(--black);
+    border-bottom:none;
+    border-radius:6cqw 6cqw 0 0;
+  }
+  .p-six .head.out{opacity:.28;position:relative}
+  .p-six .head.out::after{
+    content:"";position:absolute;left:-30%;right:-30%;top:50%;
+    border-top:1.4cqw solid var(--black);
+    transform:rotate(-18deg);
+  }
+  .p-six .display{font-size:11cqw}
+  .p-six .small{opacity:.85}
+
+  /* ---------- P6: think sip repeat ---------- */
+  .p-repeat{background:var(--black);color:var(--cream)}
+  .p-repeat .stack{display:flex;flex-direction:column;gap:2cqw}
+  .p-repeat .stack .display{font-size:12.5cqw}
+  .p-repeat .stack .display:nth-child(2){color:var(--orange)}
+  .p-repeat .eyebrow{color:var(--orange)}
+
+  /* ---------- P7: arch pattern (graphic language) ---------- */
+  .p-pattern{
+    background-color:var(--green);
+    color:var(--cream);
+  }
+  .p-pattern .tile{
+    position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='120'%3E%3Cpath d='M25,95 V60 A40,40 0 0 1 65,25 A40,40 0 0 1 105,60 V95 H82 V66 Q82,48 65,48 Q48,48 48,66 V95 Z' fill='%23EBE7C8' fill-opacity='.13'/%3E%3C/svg%3E");
+    background-size:22cqw 20.3cqw;
+  }
+  .p-pattern .plate{
+    background:var(--green);
+    padding:6cqw 7cqw;
+    outline:1cqw solid var(--cream);
+  }
+  .p-pattern .display{font-size:9cqw}
+  .p-pattern .display em{font-style:normal;color:var(--orange)}
+  .p-pattern .eyebrow{color:var(--orange)}
+
+  /* ---------- P8: good nights, brown ---------- */
+  .p-story2{background:var(--brown);color:var(--cream)}
+  .p-story2 .display{font-size:9.6cqw;text-align:left;align-self:flex-start}
+  .p-story2 .display em{font-style:normal;color:var(--orange)}
+  .p-story2 .body{align-items:flex-start;text-align:left;gap:6cqw}
+  .p-story2 .small{opacity:.85}
+  .p-story2 .foot{justify-content:flex-start;letter-spacing:.14em}
+
+  /* ---------- print ---------- */
+  @media print{
+    body{padding:0;background:#fff}
+    .page-head{display:none}
+    .gallery{display:block;max-width:none}
+    .poster{
+      width:100vw;height:100vh;
+      aspect-ratio:auto;
+      border-radius:0;
+      page-break-after:always;
+      -webkit-print-color-adjust:exact;
+      print-color-adjust:exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>Quiz night posters</h1>
+  <p>Eight minimalist designs in the house style. Print this page, or save as PDF, and each poster lands on its own A4 sheet.</p>
+</div>
+
+<div class="gallery">
+
+  <!-- P1: the statement -->
+  <div class="poster p-orange">
+    <div class="body">
+      <div class="display">Know<br>things.<br>Win<br>beer.</div>
+      <p class="small">Pub quiz · Every second Wednesday · 20:00 · Free entry</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P2: true story -->
+  <div class="poster p-story">
+    <div class="body">
+      <p class="eyebrow">A true story from The Tunnel</p>
+      <div class="display">Someone once knew all the flags of Oceania</div>
+      <hr class="rule">
+      <p class="small">Their team drank free for the rest of the night.</p>
+      <p class="tagline">Smart people deserve good beer.</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>Quiz night · Every second Wednesday · 20:00</span></div>
+  </div>
+
+  <!-- P3: the quiz mark -->
+  <div class="poster p-dark">
+    <div class="glow" aria-hidden="true"></div>
+    <div class="body">
+      <svg class="qlogo" viewBox="240 175 600 740" aria-hidden="true">
+        <path d="M270,515 V415 A210,210 0 0 1 480,205 H600 A210,210 0 0 1 810,415 V695 H645 V475 Q645,370 540,370 Q435,370 435,475 V515 Z" fill="#EA6F1C"/>
+        <circle cx="728" cy="820" r="64" fill="#EBE7C8"/>
+      </svg>
+      <div class="display">Quiz night<br>is <em>on.</em></div>
+      <p class="eyebrow">Every second Wednesday · 20:00</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P4: jackpot on green -->
+  <div class="poster p-jackpot">
+    <div class="body">
+      <p class="eyebrow">The jackpot currently stands at</p>
+      <div class="amount">€30</div>
+      <div class="display">Come take it.</div>
+      <p class="small">It rolls over every quiz until somebody does.</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>Quiz night · Every second Wednesday</span></div>
+  </div>
+
+  <!-- P5: six heads max -->
+  <div class="poster p-six">
+    <div class="body">
+      <div class="heads" aria-hidden="true">
+        <span class="head"></span><span class="head"></span><span class="head"></span>
+        <span class="head"></span><span class="head"></span><span class="head"></span>
+        <span class="head out"></span>
+      </div>
+      <div class="display">Six heads<br>max.</div>
+      <p class="small">Seven is a crowd. Bring your five smartest friends.</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>Quiz night · The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P6: think sip repeat -->
+  <div class="poster p-repeat">
+    <div class="body">
+      <div class="stack">
+        <div class="display">Think.</div>
+        <div class="display">Sip.</div>
+        <div class="display">Repeat.</div>
+      </div>
+      <p class="eyebrow">Pub quiz · Every second Wednesday · 20:00</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P7: arch pattern -->
+  <div class="poster p-pattern">
+    <div class="tile" aria-hidden="true"></div>
+    <div class="body">
+      <div class="plate">
+        <div class="display">One table.<br>Many<br><em>answers.</em></div>
+      </div>
+      <p class="eyebrow">Pub quiz · Free entry</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P8: good nights -->
+  <div class="poster p-story2">
+    <div class="body">
+      <div class="display">Good nights turn into stories. Some turn into <em>points.</em></div>
+      <p class="small">The Tunnel Quiz · Every second Wednesday · 20:00</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+</div>
+
+</body>
+</html>
