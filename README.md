@@ -12,32 +12,72 @@ emails/day, 3000/month).
     schema.sql            D1 table
     wrangler.toml         Cloudflare config
 
-## Deploy (one time, ~10 minutes)
+## Deploy via GitHub (recommended)
 
-    npm install -g wrangler        # or use npx wrangler
+This repo is already committed on branch `main`. Push it, connect it,
+done. Every later `git push` deploys automatically; branches get
+preview URLs.
+
+### 1. Push to GitHub
+
+Create an empty repo at github.com (private is fine, no README), then:
+
+    git remote add origin git@github.com:YOUR_USER/tunnel-quiz.git
+    git push -u origin main
+
+(HTTPS remote works too. To put your own name on the commit first:
+`git commit --amend --reset-author` after setting git config.)
+
+### 2. Create the database
+
+    npm install -g wrangler     # or npx wrangler
     wrangler login
-
-    # 1. create the database and copy its id into wrangler.toml
     wrangler d1 create tunnel-quiz
-    #   -> paste the printed database_id into wrangler.toml
-
-    # 2. create the table
     wrangler d1 execute tunnel-quiz --remote --file=schema.sql
 
-    # 3. deploy (run from the project root)
+### 3. Connect Cloudflare Pages to the repo
+
+In the Cloudflare dashboard:
+
+1. Workers & Pages -> Create -> Pages -> **Connect to Git**
+2. Authorize GitHub, select the `tunnel-quiz` repo
+3. Build settings:
+   - Framework preset: **None**
+   - Build command: leave **empty**
+   - Build output directory: **public**
+4. Save and Deploy. The `functions/` directory is picked up
+   automatically; the first deploy will work but /api/bookings will
+   error until the bindings below exist.
+
+### 4. Bindings, variables, secrets
+
+Pages project -> Settings:
+
+- **Bindings** -> Add -> D1 database
+  - Variable name: `DB`
+  - Database: `tunnel-quiz`
+- **Variables and secrets**:
+  - `RESEND_API_KEY` (type Secret) from resend.com
+  - `FROM_EMAIL` e.g. `The Tunnel Quiz <quiz@yourdomain.nl>` (optional)
+  - `NOTIFY_EMAIL` your address, BCC on every booking (optional)
+  - `TABLE_LIMIT` max teams per night, default 12 (optional)
+
+Then Deployments -> Retry deployment so the bindings take effect.
+
+### 5. Test
+
+Open the .pages.dev URL, book a table, then:
+
+    wrangler d1 execute tunnel-quiz --remote \
+      --command "SELECT * FROM bookings"
+
+## Deploy without GitHub (fallback)
+
     wrangler pages deploy
 
-    # 4. secrets and settings
-    wrangler pages secret put RESEND_API_KEY --project-name tunnel-quiz
-
-Then in the Cloudflare dashboard (Pages -> tunnel-quiz -> Settings ->
-Environment variables) optionally set:
-
-    FROM_EMAIL    The Tunnel Quiz <quiz@yourdomain.nl>
-    NOTIFY_EMAIL  you@yourdomain.nl   (BCC on every booking)
-    TABLE_LIMIT   12                  (max teams per night)
-
-Redeploys after the first one are just `wrangler pages deploy`.
+from the project root does a direct upload. Same bindings apply. If you
+prefer wiring D1 through wrangler.toml instead of the dashboard,
+uncomment the d1 block there and paste the real database_id.
 
 ## Resend notes
 
