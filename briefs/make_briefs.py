@@ -159,14 +159,13 @@ def performer_story():
                'your way, or guard the jackpot round and take the attempts on it '
                'personally. Your choice, agreed in advance.'))
     s.append(b('<b>The Verdict.</b> A short closing bit before final scores: '
-               'your character\u2019s ruling on the evening.'))
-    s.append(p('Everything inside those beats is your playground. Total mic time '
-               'is roughly 15 to 20 minutes across the night.'))
+               'your character\u2019s ruling on the evening and who they think '
+               'won, before announcing the winners.'))
+    s.append(p('Everything inside those beats is your playground.'))
     s.append(hd('Rules of the road'))
     s.append(b('The quiz wins ties. If a bit and the game collide, the game goes '
-               'first; there is always another gap two minutes later.'))
-    s.append(b('Punch at the host, not the teams. The teams are paying '
-               'customers; the host signed up for this.'))
+               'first.'))
+    s.append(b('Keep it positive and friendly.'))
     s.append(b('Bar-friendly material: it is a mixed room of teams, not a late '
                'club spot.'))
     s.append(hd('What we need from you, and when'))
