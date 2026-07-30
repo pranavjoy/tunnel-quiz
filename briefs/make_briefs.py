@@ -48,7 +48,7 @@ def page_decor(title):
         draw_arch(c, 18 * mm, H - band_h + 9 * mm, 13 * mm, CREAM)
         c.setFillColor(BLACK)
         c.setFont('Helvetica-Bold', 20)
-        c.drawString(38 * mm, H - band_h + 17 * mm, 'THE TUNNEL QUIZ')
+        c.drawString(38 * mm, H - band_h + 17 * mm, 'THE TUNNEL & QUIZ')
         c.setFont('Helvetica-Bold', 11)
         c.drawString(38 * mm, H - band_h + 9.5 * mm, title.upper())
         # green footer band
@@ -136,7 +136,7 @@ def bar_story():
 # --------------------------------------------------------- performer brief
 def performer_story():
     s = []
-    s.append(lead('The Tunnel Quiz is a biweekly pub quiz in Amsterdam West with '
+    s.append(lead('The Tunnel & Quiz is a biweekly pub quiz in Amsterdam West with '
                   'a double-act twist: every edition features one guest co-host, '
                   'billed as <b>Tonight\u2019s Special</b>, playing a character of '
                   'their own invention for the night. This brief is everything '
