@@ -147,8 +147,10 @@ def performer_story():
                'Extraordinaire".'))
     s.append(b('Every night stands alone. No lore, no continuity, no watching '
                'previous editions. You inherit nothing and owe nothing.'))
-    s.append(b('The host (Pranav) plays it straight and runs the actual quiz. '
-               'You are his problem for the evening.'))
+    s.append(b('The co-host (Pranav) plays it straight and runs the quiz. You are '
+               'expected to react to and comment on the questions asked. Since '
+               'there is no projector to show and persist the questions, this '
+               'will also be our opportunity to repeat and reemphasise them.'))
     s.append(hd('The frame: three fixed beats, the rest is yours'))
     s.append(b('<b>The Entrance.</b> You get a music cue and a menu-style '
                'introduction ("Every quiz needs a host. Ours comes with a '
@@ -171,12 +173,12 @@ def performer_story():
     s.append(b('By the Friday before: your character\u2019s name plus one '
                'menu-style description line. It goes on the poster, the '
                'chalkboard, and Instagram.'))
-    s.append(b('Optional but recommended: a 20-minute coffee with Pranav to walk '
-               'the three beats.'))
+    s.append(b('What you think would be a good intro music cue.'))
     s.append(hd('Logistics'))
     s.append(b('The Tunnel &amp; Co., Bilderdijkstraat 186, Amsterdam. Arrive '
                '18:45. Quiz runs 19:30 to roughly 21:45.'))
-    s.append(b('Drinks arrangement is confirmed per night before you say yes.'))
+    s.append(b('This is a paid gig. For transparency, all profits after costs '
+               'are split evenly between the co-hosts.'))
     s.append(gap(8))
     s.append(p('<b>In short:</b> one night, one character, three beats, a seated '
                'and mildly competitive audience, and a straight man to work '
