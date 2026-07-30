@@ -2,19 +2,11 @@ name = "tunnel-quiz"
 compatibility_date = "2026-07-01"
 pages_build_output_dir = "public"
 
-# Cloudflare manages this project's bindings through this file.
-# Paste the id from `wrangler d1 list` (or the `d1 create` output),
-# commit, push - the next deploy picks it up.
 [[d1_databases]]
 binding = "DB"
 database_name = "tunnel-quiz"
-database_id = "PASTE_DATABASE_ID_HERE"
+database_id = "08f52117-8cd1-4546-9393-58c071860ff9"
 
-# Non-secret settings. Edit freely; push to apply.
 [vars]
-FROM_EMAIL = "The Tunnel & Quiz <onboarding@resend.dev>"
-# NOTIFY_EMAIL = "you@yourdomain.nl"
+FROM_EMAIL = "The Tunnel & Quiz <thetunnelandquiz@gmail.com>"
 TABLE_LIMIT = "12"
-
-# RESEND_API_KEY is a secret and must NOT go in this file. Set it with:
-#   wrangler pages secret put RESEND_API_KEY --project-name tunnel-quiz
