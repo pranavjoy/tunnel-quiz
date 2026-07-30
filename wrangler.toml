@@ -8,5 +8,5 @@ database_name = "tunnel-quiz"
 database_id = "08f52117-8cd1-4546-9393-58c071860ff9"
 
 [vars]
-FROM_EMAIL = "The Tunnel & Quiz <thetunnelandquiz@gmail.com>"
+FROM_EMAIL = "The Tunnel & Quiz <bookings@tunnelpubquiz.com>"
 TABLE_LIMIT = "12"
