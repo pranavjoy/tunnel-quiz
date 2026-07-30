@@ -151,6 +151,46 @@
     html{scroll-behavior:auto}
   }
 
+  /* ---------- tonight's special ---------- */
+  .special{
+    background-color:var(--green);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='120'%3E%3Cpath d='M25,95 V60 A40,40 0 0 1 65,25 A40,40 0 0 1 105,60 V95 H82 V66 Q82,48 65,48 Q48,48 48,66 V95 Z' fill='%23EBE7C8' fill-opacity='.07'/%3E%3C/svg%3E");
+    background-size:130px 120px;
+    padding:clamp(56px,8vw,96px) clamp(20px,6vw,72px);
+  }
+  .special-card{
+    max-width:560px;margin:0 auto;
+    background:var(--cream);
+    color:var(--brown);
+    text-align:center;
+    padding:clamp(36px,5vw,52px) clamp(24px,4vw,44px);
+    border:3px solid var(--brown);
+    outline:3px solid var(--cream);
+    outline-offset:6px;
+    border-radius:4px;
+  }
+  .special-card .eyebrow{color:var(--orange)}
+  .special-card h2{
+    font-family:'Brigends Expanded','Anybody',sans-serif;
+    font-stretch:118%;font-weight:800;
+    text-transform:uppercase;
+    font-size:clamp(1.4rem,3.6vw,2rem);
+    line-height:1.1;
+    margin:18px 0 14px;
+    color:var(--black);
+  }
+  .special-card .served{font-weight:600;font-size:.98rem}
+  .special-rule{
+    border:none;border-top:2px dashed var(--brown);
+    width:80px;margin:24px auto;opacity:.5;
+  }
+  .special-date{
+    font-weight:800;text-transform:uppercase;
+    letter-spacing:.14em;font-size:.85rem;
+    color:var(--black);
+  }
+  .special-note{margin-top:12px;font-size:.8rem;font-weight:600;opacity:.65}
+
   /* ---------- details ---------- */
   .details{
     padding:clamp(64px,10vw,120px) clamp(20px,6vw,72px);
@@ -426,6 +466,22 @@
   </div>
 </div>
 
+<!-- ======================================================
+     TONIGHT'S SPECIAL - swap the two lines marked EDIT
+     each edition. Date fills itself with the next quiz
+     night automatically. No name until the night itself.
+     ====================================================== -->
+<section class="special">
+  <div class="special-card">
+    <p class="eyebrow">Tonight's Special</p>
+    <h2 class="display">A man who has never been wrong.</h2><!-- EDIT: menu-style description, no name -->
+    <p class="served">Served with three rounds and a jackpot. No substitutions.</p><!-- EDIT: served-with line -->
+    <hr class="special-rule">
+    <p class="special-date"><span id="specialDate">Next quiz night</span> · 19:30</p>
+    <p class="special-note">The special changes every edition. Ask your server; they won't tell you either.</p>
+  </div>
+</section>
+
 <section class="details">
   <div class="poster">
     <p class="eyebrow">A true story from The Tunnel</p>
@@ -536,6 +592,8 @@
     d = new Date(d);
     d.setUTCDate(d.getUTCDate() + 14);
   }
+  // Tonight's Special card shows the next quiz night
+  document.getElementById('specialDate').textContent = dateSel.options[0].textContent;
 
   // ------- team size stepper, capped at 6 -------
   var size = 4, MIN = 1, MAX = 6;

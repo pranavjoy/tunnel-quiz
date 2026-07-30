@@ -182,6 +182,23 @@
   .p-story2 .small{opacity:.85}
   .p-story2 .foot{justify-content:flex-start;letter-spacing:.14em}
 
+  /* ---------- P9: tonight's special, fill in the blank ---------- */
+  .p-menu{background:var(--cream);color:var(--brown)}
+  .p-menu .eyebrow{color:var(--orange)}
+  .p-menu .display{font-size:11cqw;color:var(--black)}
+  .p-menu .blanks{width:70cqw;display:flex;flex-direction:column;gap:8cqw;margin-top:2cqw}
+  .p-menu .blank{border-bottom:.8cqw dashed var(--brown);opacity:.55}
+  .p-menu .small{opacity:.85}
+  .p-menu .menu-date{
+    font-weight:800;text-transform:uppercase;
+    letter-spacing:.14em;font-size:3cqw;color:var(--black);
+  }
+  .p-menu .date-blank{
+    display:inline-block;width:16cqw;
+    border-bottom:.8cqw dashed var(--brown);
+    vertical-align:baseline;opacity:.55;
+  }
+
   /* ---------- print ---------- */
   @media print{
     body{padding:0;background:#fff}
@@ -202,7 +219,7 @@
 
 <div class="page-head">
   <h1>Quiz night posters</h1>
-  <p>Eight minimalist designs in the house style. Print this page, or save as PDF, and each poster lands on its own A4 sheet.</p>
+  <p class="page-head-sub">Nine minimalist designs in the house style, including a fill-in-the-blank Tonight's Special sheet for the chalkboard easel. Print this page, or save as PDF, and each poster lands on its own A4 sheet.</p>
 </div>
 
 <div class="gallery">
@@ -297,6 +314,21 @@
     <div class="body">
       <div class="display">Good nights turn into stories. Some turn into <em>points.</em></div>
       <p class="small">The Tunnel Quiz · Every second Wednesday · 20:00</p>
+    </div>
+    <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
+  </div>
+
+  <!-- P9: tonight's special (fill in the blank) -->
+  <div class="poster p-menu">
+    <div class="body">
+      <p class="eyebrow">The Tunnel Quiz presents</p>
+      <div class="display">Tonight's<br>Special:</div>
+      <div class="blanks" aria-hidden="true">
+        <div class="blank"></div>
+        <div class="blank"></div>
+      </div>
+      <p class="small">Served with three rounds and a jackpot.</p>
+      <p class="menu-date">Wednesday <span class="date-blank"></span> · 19:30</p>
     </div>
     <div class="foot"><span class="arch-mark" aria-hidden="true"></span><span>The Tunnel &amp; Co.</span></div>
   </div>
