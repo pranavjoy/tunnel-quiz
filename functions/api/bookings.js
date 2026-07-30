@@ -5,7 +5,7 @@
  * Bindings (set in Cloudflare Pages project settings):
  *   DB               D1 database (see schema.sql)
  *   RESEND_API_KEY   secret, from resend.com
- *   FROM_EMAIL       e.g. "The Tunnel Quiz <quiz@yourdomain.nl>"
+ *   FROM_EMAIL       e.g. "The Tunnel & Quiz <quiz@yourdomain.nl>"
  *                    (falls back to onboarding@resend.dev for testing)
  *   NOTIFY_EMAIL     optional, gets a copy of every booking
  *   TABLE_LIMIT      optional, max teams per night (default 12)
@@ -49,12 +49,13 @@ function confirmationHtml({ team, captain, dateLabel, size }) {
     <div style="padding:28px;color:#3B2A1F;">
       <p style="margin:0 0 16px;font-size:16px;">Hi ${e(captain)},</p>
       <p style="margin:0 0 16px;font-size:16px;">
-        <strong>${e(team)}</strong> has a table for <strong>${size}</strong> at The Tunnel Quiz on
+        <strong>${e(team)}</strong> has a table for <strong>${size}</strong> at The Tunnel &amp; Quiz on
         <strong>${e(dateLabel)}</strong>.
       </p>
       <p style="margin:0 0 16px;font-size:15px;">
-        Doors from 19:30, first question at 20:00 sharp. Three rounds, then the jackpot.
-        Six per team, max. Free entry.
+        First question at 19:30 sharp. Three rounds, then the jackpot.
+        Six per team, max. Entry is €3 per person, or €15 for a full table
+        of six, paid at the door.
       </p>
       <p style="margin:0;font-size:15px;">
         The Tunnel &amp; Co. · Bilderdijkstraat 186, Amsterdam<br>
@@ -75,9 +76,9 @@ async function sendEmail(env, booking) {
   }).format(new Date(booking.date + 'T12:00:00Z'));
 
   const payload = {
-    from: env.FROM_EMAIL || 'The Tunnel Quiz <onboarding@resend.dev>',
+    from: env.FROM_EMAIL || 'The Tunnel & Quiz <onboarding@resend.dev>',
     to: [booking.email],
-    subject: `Seat saved: ${booking.team}, ${dateLabel} 20:00`,
+    subject: `Seat saved: ${booking.team}, ${dateLabel} 19:30`,
     html: confirmationHtml({ ...booking, dateLabel }),
   };
   if (env.NOTIFY_EMAIL) payload.bcc = [env.NOTIFY_EMAIL];

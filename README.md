@@ -1,4 +1,4 @@
-# The Tunnel Quiz - site + booking system
+# The Tunnel & Quiz - site + booking system
 
 Static site on Cloudflare Pages, bookings stored in D1, confirmation
 emails via Resend. Everything open source / standard tooling; the only
@@ -58,7 +58,7 @@ Pages project -> Settings:
   - Database: `tunnel-quiz`
 - **Variables and secrets**:
   - `RESEND_API_KEY` (type Secret) from resend.com
-  - `FROM_EMAIL` e.g. `The Tunnel Quiz <quiz@yourdomain.nl>` (optional)
+  - `FROM_EMAIL` e.g. `The Tunnel & Quiz <quiz@yourdomain.nl>` (optional)
   - `NOTIFY_EMAIL` your address, BCC on every booking (optional)
   - `TABLE_LIMIT` max teams per night, default 12 (optional)
 

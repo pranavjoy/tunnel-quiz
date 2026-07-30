@@ -2,16 +2,19 @@ name = "tunnel-quiz"
 compatibility_date = "2026-07-01"
 pages_build_output_dir = "public"
 
-# D1 binding. Two ways to wire it up, pick ONE:
-#
-# A) Dashboard (recommended with GitHub integration):
-#    Pages project -> Settings -> Bindings -> Add -> D1 database
-#    Variable name: DB, database: tunnel-quiz
-#
-# B) This file: uncomment the block below and paste the real id
-#    from `wrangler d1 create tunnel-quiz`, then push.
-#
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "tunnel-quiz"
-# database_id = "paste-real-id-here"
+# Cloudflare manages this project's bindings through this file.
+# Paste the id from `wrangler d1 list` (or the `d1 create` output),
+# commit, push - the next deploy picks it up.
+[[d1_databases]]
+binding = "DB"
+database_name = "tunnel-quiz"
+database_id = "PASTE_DATABASE_ID_HERE"
+
+# Non-secret settings. Edit freely; push to apply.
+[vars]
+FROM_EMAIL = "The Tunnel & Quiz <onboarding@resend.dev>"
+# NOTIFY_EMAIL = "you@yourdomain.nl"
+TABLE_LIMIT = "12"
+
+# RESEND_API_KEY is a secret and must NOT go in this file. Set it with:
+#   wrangler pages secret put RESEND_API_KEY --project-name tunnel-quiz
