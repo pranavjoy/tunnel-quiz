@@ -226,12 +226,42 @@
   .fact p strong{color:var(--cream);font-weight:700}
   @media (max-width:480px){.fact{grid-template-columns:72px 1fr}.fact b{font-size:1.1rem}}
 
-  /* ---------- arch pattern divider (graphic language) ---------- */
-  .pattern{
-    height:120px;
+  /* ---------- jackpot (arch pattern band, graphic language) ---------- */
+  .jackpot{
     background-color:var(--green);
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='120'%3E%3Cpath d='M25,95 V60 A40,40 0 0 1 65,25 A40,40 0 0 1 105,60 V95 H82 V66 Q82,48 65,48 Q48,48 48,66 V95 Z' fill='%23EBE7C8' fill-opacity='.16'/%3E%3C/svg%3E");
     background-size:130px 120px;
+    text-align:center;
+    padding:clamp(64px,10vw,120px) clamp(20px,6vw,72px);
+  }
+  .jackpot .eyebrow{color:var(--orange);margin-bottom:22px}
+  .jackpot .amount{
+    font-family:'Brigends Expanded','Anybody',sans-serif;
+    font-stretch:125%;font-weight:800;
+    line-height:1;
+    font-size:clamp(3.6rem,15vw,7.5rem);
+    color:var(--orange);
+  }
+  .jackpot .amount sup{
+    font-size:.4em;
+    vertical-align:super;
+    margin-right:.05em;
+  }
+  .jackpot .rolls{
+    display:block;
+    margin-top:10px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:.8rem;
+    color:var(--cream);
+    opacity:.75;
+  }
+  .jackpot .copy{
+    max-width:42ch;
+    margin:26px auto 0;
+    font-weight:600;
+    opacity:.9;
   }
 
   /* ---------- signup ---------- */
@@ -415,10 +445,10 @@
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <span>Think.</span><span>Sip.</span><span>Repeat.</span><span>·</span>
-    <span>Every second Wednesday</span><span>·</span><span>Jackpot: €30</span><span>·</span>
+    <span>Every second Wednesday</span><span>·</span><span>Jackpot: €100</span><span>·</span>
     <span>Teams of six, max</span><span>·</span>
     <span>Think.</span><span>Sip.</span><span>Repeat.</span><span>·</span>
-    <span>Every second Wednesday</span><span>·</span><span>Jackpot: €30</span><span>·</span>
+    <span>Every second Wednesday</span><span>·</span><span>Jackpot: €100</span><span>·</span>
     <span>Teams of six, max</span><span>·</span>
   </div>
 </div>
@@ -431,8 +461,8 @@
 <section class="special">
   <div class="special-card">
     <p class="eyebrow">Tonight's Special</p>
-    <h2 class="display">Quizantha Williams: Candle Maker Extraordinaire</h2><!-- EDIT: this edition's special -->
-    <p class="served">Served with three rounds, a jackpot, and a lightly scented atmosphere.</p><!-- EDIT: served-with line -->
+    <h2 class="display">The Donna: A hint? You'll be sleeping with the fishes tonight.</h2><!-- EDIT: this edition's special -->
+    <p class="served">Served with three rounds, a jackpot, and an offer the questions won't refuse.</p><!-- EDIT: served-with line -->
     <hr class="special-rule">
     <p class="special-date"><span id="specialDate">Next quiz night</span> · 19:30</p>
     <p class="special-note">The special changes every edition. No substitutions.</p>
@@ -445,12 +475,17 @@
     <div class="fact"><b>19:30</b><p>Doors don't close, but the first question won't wait. Come early, the good tables go fast.</p></div>
     <div class="fact"><b>6</b><p><strong>Six per team, max.</strong> Seven is a crowd. Solo players get adopted by a friendly table.</p></div>
     <div class="fact"><b>3+1</b><p>Three rounds of questions, then the jackpot round, where the real money is.</p></div>
-    <div class="fact"><b>€30</b><p><strong>The jackpot currently stands at €30.</strong> Nobody wins it, it rolls over to the next quiz. Somebody eventually walks out rich.</p></div>
+    <div class="fact"><b>€100</b><p><strong>The jackpot currently stands at €100.</strong> Nobody wins it, it rolls over to the next quiz. Somebody eventually walks out rich.</p></div>
     <div class="fact"><b>€3</b><p><strong>€3 per person, or €15 for a full table of six.</strong> Winners drink on the house: one drink each, covered by the entry pot. Losers take another shot at it in two weeks.</p></div>
   </div>
 </section>
 
-<div class="pattern" aria-hidden="true"></div>
+<section class="jackpot" id="jackpot">
+  <p class="eyebrow">Jackpot Round</p>
+  <p class="amount"><sup>&euro;</sup>100</p>
+  <span class="rolls">And rolling over until someone wins it</span>
+  <p class="copy">Nobody's cracked it yet. It carries over every second Wednesday until one team finally takes it home.</p>
+</section>
 
 <section class="signup" id="signup">
   <div class="signup-inner">
